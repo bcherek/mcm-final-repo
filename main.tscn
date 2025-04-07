@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf55hbtsvbfvj"]
+
+[ext_resource type="Script" uid="uid://cpmp5oahatlot" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dxsxvop4wrnkf" path="res://HuGGeENt6kGyixe3hT9tnY.jpg" id="1_ey5jq"]
+[ext_resource type="Script" uid="uid://dox3opm1sy67x" path="res://planet_spawner.gd" id="3_d3i3p"]
+[ext_resource type="Script" uid="uid://bfyegb3e0iyn2" path="res://camera_2d.gd" id="4_lquwl"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1bvp3")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(545, 362)
+scale = Vector2(0.625417, 0.625417)
+texture = ExtResource("1_ey5jq")
+
+[node name="PlanetSpawner" type="Node2D" parent="."]
+position = Vector2(243, 107)
+scale = Vector2(1.045, 0.625)
+script = ExtResource("3_d3i3p")
+num_rows = 2
+num_cols = 3
+spawn_chance_at_intersect = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_lquwl")
