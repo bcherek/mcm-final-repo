@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdbhhmpdpqons"]
+
+[ext_resource type="Script" uid="uid://b27yxmu5hnv1l" path="res://panel.gd" id="1_gwequ"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.617
+anchor_bottom = 0.921
+offset_right = 441.216
+offset_bottom = 51.192
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 118.0
+offset_right = 768.0
+offset_bottom = 483.0
+tooltip_text = "[rainbow] [wave] this is my tooltip customized"
+script = ExtResource("1_gwequ")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "aaaaaaaaaa"

@@ -83,6 +83,7 @@ func spawn_planets():
 				#create planet
 				var instance = MyScene.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
 				instance.position = Vector2(base_x_pos + offset_x, base_y_pos + offset_y)
+				instance.scale = Vector2(1, 1)
 				#instance.position = Vector2(base_x_pos, base_y_pos)
 
 				add_child(instance)

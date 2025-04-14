@@ -1,14 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://474rxj6f7km0"]
+[gd_scene load_steps=5 format=3 uid="uid://474rxj6f7km0"]
 
 [ext_resource type="Texture2D" uid="uid://cb4e7can11bwj" path="res://planet_32px_placeholder.png" id="1_1odxm"]
 [ext_resource type="Script" uid="uid://cpjr0rblhytgc" path="res://planet.gd" id="1_mtr83"]
+[ext_resource type="Script" uid="uid://b27yxmu5hnv1l" path="res://panel.gd" id="3_a75xc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a75xc"]
+bg_color = Color(0.6, 0.823529, 0.6, 0.145098)
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="Planet" type="Node2D"]
+position = Vector2(500, 300)
 script = ExtResource("1_mtr83")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="planet_sprite" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_1odxm")
 
-[node name="PopupMenu" type="PopupMenu" parent="."]
-visible = true
+[node name="planet_panel" type="Panel" parent="planet_sprite"]
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 21.0
+offset_bottom = 20.0
+tooltip_text = "[rainbow] here we are"
+theme_override_styles/panel = SubResource("StyleBoxFlat_a75xc")
+script = ExtResource("3_a75xc")
+
+[connection signal="mouse_entered" from="planet_sprite/planet_panel" to="." method="_on_panel_mouse_entered"]
