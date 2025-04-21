@@ -36,4 +36,4 @@ func _input(event: InputEvent) -> void:
 				if zoom < zoom_max:
 					des_zoom += zoom_speed
 		des_zoom = des_zoom.clamp(zoom_min,zoom_max) 		
-	
+	if event is InputEventKey:

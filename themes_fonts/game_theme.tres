@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://csh6pvlo4dyei"]
+
+[ext_resource type="FontFile" uid="uid://bvfl3jc1suiqd" path="res://themes_fonts/MegatransdemoRegular-8M9B0.otf" id="1_1fvms"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fvms"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.147672, 0.147672, 0.147672, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[resource]
+default_font_size = 10
+Button/fonts/font = ExtResource("1_1fvms")
+Label/fonts/font = ExtResource("1_1fvms")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_1fvms")
+RichTextLabel/fonts/bold_font = ExtResource("1_1fvms")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_1fvms")
+RichTextLabel/fonts/italics_font = ExtResource("1_1fvms")
+RichTextLabel/fonts/mono_font = ExtResource("1_1fvms")
+RichTextLabel/fonts/normal_font = ExtResource("1_1fvms")
