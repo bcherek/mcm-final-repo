@@ -11,6 +11,5 @@ script = ExtResource("1_jyhfs")
 script = ExtResource("2_tbgi4")
 
 [node name="background" type="Sprite2D" parent="Camera2D"]
-scale = Vector2(1.35868, 1.35868)
+scale = Vector2(2, 2)
 texture = ExtResource("3_tefeu")
-offset = Vector2(1.44043, -1.92058)

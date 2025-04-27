@@ -58,3 +58,4 @@ func _on_tooltip_hitbox_mouse_exited() -> void:
 func _on_tooltip_hitbox_mouse_entered() -> void:
 	print("on tooltip hitbox mouse entered")
 	pass # Replace with function body.
+	

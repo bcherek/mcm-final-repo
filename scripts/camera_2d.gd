@@ -3,6 +3,16 @@ extends Camera2D
 
 const DEAD_ZONE: float = 0.6
 
+
+var zoom_min = Vector2(.5,.5)
+var zoom_max = Vector2(2,2)
+var zoom_speed = Vector2(.2,.2)
+var des_zoom = zoom
+
+var arrow_speed = 1000
+
+@onready var background: Sprite2D = $background
+
 func _process(delta: float) -> void:
 	#This variable stores the mouse position centered on (0,0). There are negative #'s
 	var centered_mouse_pos: Vector2 = get_viewport().get_mouse_position() - get_viewport_rect().get_center()
@@ -17,13 +27,16 @@ func _process(delta: float) -> void:
 
 	zoom = lerp(zoom, des_zoom, 0.2)
 	#$background.scale = Vector2(2,2) - zoom
+	
+	if Input.is_action_pressed("up"):
+		position.y -= arrow_speed * delta
+	if Input.is_action_pressed("down"):
+		position.y += arrow_speed * delta
+	if Input.is_action_pressed("right"):
+		position.x += arrow_speed * delta
+	if Input.is_action_pressed("left"):
+		position.x -= arrow_speed * delta
 		
-
-var zoom_min = Vector2(.5,.5)
-var zoom_max = Vector2(2,2)
-var zoom_speed = Vector2(.2,.2)
-var des_zoom = zoom
-
 
 func _input(event: InputEvent) -> void:
 	#handle zoom based on scroll event
@@ -36,4 +49,3 @@ func _input(event: InputEvent) -> void:
 				if zoom < zoom_max:
 					des_zoom += zoom_speed
 		des_zoom = des_zoom.clamp(zoom_min,zoom_max) 		
-	if event is InputEventKey:
