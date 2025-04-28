@@ -13,6 +13,7 @@ size = Vector2(116.2, 117.4)
 
 [node name="Planet" type="Node2D"]
 script = ExtResource("1_0k1rn")
+planet_ID = null
 
 [node name="planet_sprite" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
@@ -25,7 +26,6 @@ position = Vector2(0.4, 0.2)
 shape = SubResource("CircleShape2D_a75xc")
 
 [node name="Tooltip_main" type="PanelContainer" parent="planet_sprite/planet_hitbox/CollisionShape2D"]
-visible = false
 visibility_layer = 2
 z_index = 1
 offset_right = 119.0

@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://7xn32br3fycj"]
+[gd_scene load_steps=2 format=3 uid="uid://7xn32br3fycj"]
+
+[ext_resource type="Script" uid="uid://34ulkpn8yl7e" path="res://global_calculations.gd" id="1_1qfxl"]
 
 [node name="Global_Processing" type="Node"]
+script = ExtResource("1_1qfxl")

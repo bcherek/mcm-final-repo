@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcudmwm5734ui"]
 
-[ext_resource type="Theme" uid="uid://4jui50o0h64h" path="res://themes_fonts/gui_theme.tres" id="1_80edf"]
-[ext_resource type="Script" uid="uid://ckuqcturpfe5k" path="res://gui.gd" id="1_cor1f"]
+[ext_resource type="Theme" uid="uid://duv45flj7i4ka" path="res://themes_fonts/gui_theme.tres" id="1_80edf"]
+[ext_resource type="Script" path="res://gui.gd" id="1_cor1f"]
 [ext_resource type="Texture2D" uid="uid://btw8yjeiw4a3" path="res://assets/species_pictures/spec_0.jpg" id="2_6lon5"]
 [ext_resource type="LabelSettings" uid="uid://cknsth6gxm321" path="res://themes_fonts/label_body_text.tres" id="3_q8o8l"]
 
@@ -117,8 +117,6 @@ size_flags_horizontal = 8
 focus_mode = 0
 mouse_filter = 1
 text = "->"
-
-[node name="ScrollBlocker" type="CanvasLayer" parent="VBoxContainer/species_log_hbox"]
 
 [connection signal="pressed" from="VBoxContainer/open menu" to="." method="_on_open_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/species_log_hbox/Panel/HBoxContainer/left button" to="." method="_on_left_button_pressed"]

@@ -10,10 +10,11 @@ var climate: String
 @onready var vbox1: VBoxContainer = $MarginContainer/VBoxContainer
 @onready var vals_pop_climate: Label = $MarginContainer/VBoxContainer/HBoxContainer/vals_pop_climate
 
+@export var planet_id: int = -1
 func _ready():
 	#without this code, 
 	mouse_filter = Control.MOUSE_FILTER_PASS
-	
+	print("eee")
 	pass
 
 func set_planet_info(dict: Dictionary) -> void:
