@@ -13,17 +13,17 @@ dest_files=["res://.godot/imported/MegatransdemoRegular-8M9B0.otf-682e4e127da911
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=2
 generate_mipmaps=false
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
+multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=1
+hinting=0
 subpixel_positioning=4
-keep_rounding_remainders=true
+keep_rounding_remainders=false
 oversampling=5.0
 Fallbacks=null
 fallbacks=[]
