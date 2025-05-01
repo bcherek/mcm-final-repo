@@ -13,7 +13,7 @@ func export_planet(planet_index: int) -> Dictionary:
 	var temp_string = Temperature_Names[planet_temp]
 	var planet_name = Planet_Names[planet_index]
 	#array of all of the the populations of the species
-	return {"pops": populations, "climate": temp_string}
+	return {"pops": populations, "climate": temp_string, "planet_name": planet_name, "species_latins": Species_Latins}
 	
 func export_species(species_index: int) -> Dictionary:
 	var carrying_capacity = K[species_index]
@@ -697,8 +697,8 @@ var Temperature_Names: Array[String] = ["Frigid", "Temperate", "Scorching"]
 var Planet_Names = ["Planet A","Planet b","Planet c","Planet d","Planet e","Planet f","Planet g","Planet h","planet i","Planet j"]
 
 ## SPECIES DETAILS
-var Species_Names = ["spec a", "spec b", "spec c", "spec d", "spec e", "spec f", "spec g", "spec h", "spec i", "spec j", "spec k", "spec l", "spec m", "spec n", "spec o", "spec p", "spec q", "spec r", "spec s", "spec t", "spec u", "spec v", "spec w", "spec x", "spec y", "spec z"]
-var Species_Latins = ["lat a", "lat b", "lat c", "lat d", "lat e", "lat f", "lat g", "lat h", "lat i", "lat j", "lat k", "lat l", "lat m", "lat n", "lat o", "lat p", "lat q", "lat r", "lat s", "lat t", "lat u", "lat v", "lat w", "lat x", "lat y", "lat z"]
+var Species_Names: Array[String] = ["spec a", "spec b", "spec c", "spec d", "spec e", "spec f", "spec g", "spec h", "spec i", "spec j", "spec k", "spec l", "spec m", "spec n", "spec o", "spec p", "spec q", "spec r", "spec s", "spec t", "spec u", "spec v", "spec w", "spec x", "spec y", "spec z"]
+var Species_Latins: Array[String] = ["lat a", "lat b", "lat c", "lat d", "lat e", "lat f", "lat g", "lat h", "lat i", "lat j", "lat k", "lat l", "lat m", "lat n", "lat o", "lat p", "lat q", "lat r", "lat s", "lat t", "lat u", "lat v", "lat w", "lat x", "lat y", "lat z"]
 
 #A_Const: Constants for Species A. A_Const[1] = Carrying Capacity. A_Const[2] = Species Size
 # [0] Carrying Capacity (K) 
