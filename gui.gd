@@ -3,26 +3,12 @@ extends Control
 
 
 
-## Species Info
-
-const SPEC_PHOTOS = [
-preload("res://assets/species_pictures/spec_0.jpg"),
-preload("res://assets/species_pictures/spec_1.jpg"),
-preload("res://assets/species_pictures/spec_2.jpg")]
 
 ##unknown species photo
 const UNKNOWN_SPEC = preload("res://assets/species_pictures/unknown_spec.png")
+@onready var global_processing: Node = $"../../Global_Processing"
 
-const SPEC_COMMON_NAMES: Array[String] = [
-	"Abefrerf",
-	"Berfijerf",
-	"Cerhgferg"]
-const SPEC_LATIN_NAMES: Array[String] = [
-	"oobbedy goobedy", "eebeedy goobedy", "glip glop"]
-const SPEC_FLAVORTEXTS: Array[String] = [
-	"Known to be sseiufohjsoijef odoidsrjfoidjr gdoitgjirjgjir rijgrijgirjg ririrjr. Likes iudjrgijdrg.",
-	"Goobedytt oiejg eorigjeoirjg eoirjgirig eeee species B so vcool!",
-	"arg oooh hahhhh eeee world stuff species C yay."]
+
 var known_species: Array[bool] = [true, true, false]
 
 var current_spec_ID = 0
@@ -48,10 +34,10 @@ func populate_gui(speciesID: int):
 	current_spec_ID = speciesID
 	if (known_species[current_spec_ID]):
 		## The player knows about the given species. Populate the gui accordingly.
-		species_photo.texture = SPEC_PHOTOS[current_spec_ID]
-		species_common_name.text = SPEC_COMMON_NAMES[current_spec_ID]
-		species_latin_name.text = SPEC_LATIN_NAMES[current_spec_ID]
-		species_flavortext.text = SPEC_FLAVORTEXTS[current_spec_ID]
+		species_photo.texture = Constants.SPEC_PHOTOS[current_spec_ID]
+		species_common_name.text = Constants.SPEC_NAMES[current_spec_ID]
+		species_latin_name.text = Constants.SPEC_LATINS[current_spec_ID]
+		species_flavortext.text = Constants.SPEC_FLAVORTEXTS[current_spec_ID]
 	else:
 		##the player DOES NOT know about the species. Leave the gui empty/mysterious
 		species_photo.texture = UNKNOWN_SPEC

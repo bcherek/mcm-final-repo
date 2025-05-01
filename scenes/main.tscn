@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf55hbtsvbfvj"]
+[gd_scene load_steps=10 format=3 uid="uid://bf55hbtsvbfvj"]
 
 [ext_resource type="Script" uid="uid://cpmp5oahatlot" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://bfyegb3e0iyn2" path="res://scripts/camera_2d.gd" id="2_tbgi4"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dxsxvop4wrnkf" path="res://assets/HuGGeENt6kGyixe3hT9tnY.jpg" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://474rxj6f7km0" path="res://scenes/planet.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bcudmwm5734ui" path="res://gui.tscn" id="5_tefeu"]
-[ext_resource type="Script" uid="uid://nqq5ude1c4pp" path="res://scenes/planet_manager.gd" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://nqq5ude1c4pp" path="res://scripts/planet_manager.gd" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://ccrw1hfqi2ryu" path="res://scripts/ship_manager.gd" id="8_tipki"]
+[ext_resource type="Script" uid="uid://bbpmun358tfo0" path="res://scripts/constants.gd" id="9_85g3d"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_jyhfs")
@@ -36,3 +38,9 @@ position = Vector2(-436, 52)
 
 [node name="Planet2" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
 position = Vector2(-86, 296)
+
+[node name="Ship_Manager" type="Node" parent="."]
+script = ExtResource("8_tipki")
+
+[node name="Constants" type="Node" parent="."]
+script = ExtResource("9_85g3d")

@@ -44,14 +44,13 @@ func _process(delta: float) -> void:
 		
 
 func _unhandled_input(event: InputEvent) -> void:
-	pass
 	#handle zoom based on scroll event
-	#if event is InputEventMouseButton:
-		#if event.is_pressed():
-			#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				#if zoom > zoom_min:
-					#des_zoom -= zoom_speed
-			#if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				#if zoom < zoom_max:
-					#des_zoom += zoom_speed
-		#des_zoom = des_zoom.clamp(zoom_min,zoom_max) 		
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				if zoom > zoom_min:
+					des_zoom -= zoom_speed
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				if zoom < zoom_max:
+					des_zoom += zoom_speed
+		des_zoom = des_zoom.clamp(zoom_min,zoom_max) 		

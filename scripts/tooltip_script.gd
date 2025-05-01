@@ -1,7 +1,6 @@
 extends Control
 
 var population: Array
-var species_latins: Array[String] #this needs to change when we begin hiding populations
 var planet_name: String
 var climate: String
 
@@ -9,6 +8,8 @@ var climate: String
 @onready var climate_label: Label = $ScrollContainer/MarginContainer/VBoxContainer/climate
 @onready var pops_header: Label = $"ScrollContainer/MarginContainer/VBoxContainer/pops header"
 @onready var v_box_container: VBoxContainer = $ScrollContainer/MarginContainer/VBoxContainer
+
+@onready var planet: Planet = $"../../../.."
 
 const SPECIES_MODIFIER = preload("res://species_modifier.tscn")
 
@@ -26,7 +27,6 @@ func set_planet_info(dict: Dictionary) -> void:
 	planet_name = dict["planet_name"]
 	population = dict["population"]
 	climate = dict["climate"]
-	species_latins = dict["species_latins"]
 	populate_labels()
 	
 func populate_labels() -> void:
@@ -40,9 +40,22 @@ func create_pop_btns() -> void:
 		if (population[i] != 0):
 			var spec_mod: SpeciesModifier = SPECIES_MODIFIER.instantiate()
 			pops_header.add_sibling(spec_mod)
-			print("pop: " + str(population[i]))
-			spec_mod.set_spec_name(species_latins[i] + ": "+ str(population[i]))
-			
+			spec_mod.spec_name = Constants.SPEC_LATINS[i]
+			spec_mod.spec_displayed_pop = str(population[i])
+			spec_mod.update_spec_label()
+			spec_mod.connect("request",child_requested.bind(spec_mod))
+
+
+func child_requested(delta, spec_mod: SpeciesModifier):
+	var spec_id: int = spec_mod.spec_id
+	
+	if (planet.request_abduct(spec_id, delta)):
+		if (planet.abduct_arr[spec_id] != 0):
+			spec_mod.spec_displayed_pop = str(population[spec_id]) + " (-" + str(planet.abduct_arr[spec_id]) + ")" 
+		else:
+			spec_mod.spec_displayed_pop = str(population[spec_id])
+		spec_mod.update_spec_label()
+	
 
 func pop_climate_vals() -> void:
 	climate_label.text = "Climate: " + climate

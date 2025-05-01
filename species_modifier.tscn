@@ -34,7 +34,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Button1" type="Button" parent="."]
+[node name="minus" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -42,10 +42,12 @@ theme = ExtResource("1_fy0gn")
 icon = ExtResource("3_8gt3c")
 clip_text = true
 
-[node name="Button2" type="Button" parent="."]
+[node name="plus" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_fy0gn")
 icon = ExtResource("4_wwuhg")
 clip_text = true
+
+[connection signal="pressed" from="minus" to="." method="_on_minus_pressed"]
