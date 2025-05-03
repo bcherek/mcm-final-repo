@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://of741dha26oy"]
 
-[ext_resource type="Theme" uid="uid://bb8skdiovc0jo" path="res://themes_fonts/spec_modifier_theme.tres" id="1_fy0gn"]
-[ext_resource type="Script" uid="uid://fl2xlriocnu7" path="res://species_modifier.gd" id="1_j7eux"]
-[ext_resource type="Texture2D" uid="uid://dwslhh7ifia2c" path="res://assets/minus.png" id="3_8gt3c"]
-[ext_resource type="Texture2D" uid="uid://lcobp8lpp6m" path="res://assets/plus.png" id="4_wwuhg"]
+[ext_resource type="Theme" uid="uid://bb8skdiovc0jo" path="res://themes_fonts/spec_modifier_theme.tres" id="1_swmmm"]
+[ext_resource type="Script" uid="uid://fl2xlriocnu7" path="res://scripts/species_modifier.gd" id="2_ft81a"]
+[ext_resource type="Texture2D" uid="uid://dwslhh7ifia2c" path="res://assets/ui_pictures/minus.png" id="3_rfyhh"]
+[ext_resource type="Texture2D" uid="uid://lcobp8lpp6m" path="res://assets/ui_pictures/plus.png" id="4_l8bp7"]
 
 [node name="species_modifier" type="HBoxContainer"]
 clip_contents = true
@@ -19,13 +19,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.1
-theme = ExtResource("1_fy0gn")
+theme = ExtResource("1_swmmm")
 alignment = 1
-script = ExtResource("1_j7eux")
+script = ExtResource("2_ft81a")
 
 [node name="species_name" type="Label" parent="."]
 layout_mode = 2
-theme = ExtResource("1_fy0gn")
+theme = ExtResource("1_swmmm")
 text = "species_latin: xxxx"
 
 [node name="spacer" type="Control" parent="."]
@@ -38,16 +38,19 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_fy0gn")
-icon = ExtResource("3_8gt3c")
+focus_mode = 0
+theme = ExtResource("1_swmmm")
+icon = ExtResource("3_rfyhh")
 clip_text = true
 
 [node name="plus" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_fy0gn")
-icon = ExtResource("4_wwuhg")
+focus_mode = 0
+theme = ExtResource("1_swmmm")
+icon = ExtResource("4_l8bp7")
 clip_text = true
 
 [connection signal="pressed" from="minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="plus" to="." method="_on_plus_pressed"]

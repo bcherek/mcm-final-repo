@@ -1,0 +1,198 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcudmwm5734ui"]
+
+[ext_resource type="Theme" uid="uid://duv45flj7i4ka" path="res://themes_fonts/gui_theme.tres" id="1_80edf"]
+[ext_resource type="Script" uid="uid://ckuqcturpfe5k" path="res://scripts/gui.gd" id="1_cor1f"]
+[ext_resource type="Texture2D" uid="uid://btw8yjeiw4a3" path="res://assets/species_pictures/spec_0.jpg" id="2_6lon5"]
+[ext_resource type="LabelSettings" uid="uid://cknsth6gxm321" path="res://themes_fonts/label_body_text.tres" id="3_q8o8l"]
+[ext_resource type="Texture2D" uid="uid://cb4e7can11bwj" path="res://assets/planet_pictures/planet_32px_placeholder.png" id="3_u77ya"]
+[ext_resource type="Texture2D" uid="uid://v08y1cdgrbl2" path="res://assets/ui_pictures/right_arrow_placeholder.png" id="4_jf511"]
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_cor1f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="time_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme = ExtResource("1_80edf")
+text = "Year 29000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cargo_bay_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme = ExtResource("1_80edf")
+text = "Nothing in Cargo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="bottom_pane" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="next_day_menu" type="Panel" parent="VBoxContainer/bottom_pane"]
+clip_contents = true
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("1_80edf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/bottom_pane/next_day_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_80edf")
+text = "Ferry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="src_planet" type="TextureRect" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_u77ya")
+stretch_mode = 5
+
+[node name="arrow" type="TextureRect" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_jf511")
+
+[node name="dest_planet" type="TextureRect" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_u77ya")
+stretch_mode = 5
+
+[node name="confirm_button" type="Button" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "confirm"
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom_pane"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/bottom_pane"]
+layout_mode = 2
+alignment = 2
+
+[node name="open menu" type="Button" parent="VBoxContainer/bottom_pane/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 25
+text = "Species Log"
+
+[node name="species_display_panel" type="PanelContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_80edf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel"]
+layout_mode = 2
+
+[node name="left button" type="Button" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+text = "<-"
+
+[node name="species info" type="ScrollContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Species Common Name" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "SHOULD NOT SEE THIS"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="species photo" type="TextureRect" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("2_6lon5")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="species latin name" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 16
+text = "name name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="species flavortext" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 16
+text = "body text body text body yadadadadad flabor stuff world building did you know that cashews come from a fruit?"
+label_settings = ExtResource("3_q8o8l")
+autowrap_mode = 3
+
+[node name="right button" type="Button" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+mouse_filter = 1
+text = "->"
+
+[connection signal="pressed" from="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/confirm_button" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/bottom_pane/VBoxContainer2/open menu" to="." method="_on_open_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/left button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/right button" to="." method="_on_right_button_pressed"]

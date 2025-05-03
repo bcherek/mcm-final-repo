@@ -14,4 +14,7 @@ func update_spec_label() -> void:
 	spec_label.text = spec_name + ": " + spec_displayed_pop
 
 func _on_minus_pressed() -> void:
+	emit_signal("request", 1.0)
+
+func _on_plus_pressed() -> void:
 	emit_signal("request", -1.0)

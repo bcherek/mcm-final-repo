@@ -12,6 +12,8 @@ func export_planet(planet_index: int) -> Dictionary:
 	for x in range(26):
 		populations.append(Planets[planet_index][x][Current_Time])
 	
+	print("exporting populations: "  + str(populations))
+	
 	var planet_temp = Planet_Temperatures[planet_index]
 	var temp_string = Constants.TEMP_NAMES[planet_temp]
 	var planet_name = Constants.PLAN_NAMES[planet_index]
@@ -35,14 +37,17 @@ func get_universal_pop(species_index: int) -> int:
 	return pop
 
 #Actually removes the specified population from the designated planet. 
-func remove_population(curr_planet: int, population_abducted: Array[int]) -> void:
+func remove_population(curr_planet: int, population_abducted: Array) -> void:
 	for x in range(26):
 		Planets[curr_planet][x][Current_Time] -= population_abducted[x] 
 	
 #Adds the specified population from the designated planet. 
-func add_population(dest_planet: int, population_abducted: Array[int]) -> void:
-	for x in range(26):
-		Planets[dest_planet][x][Current_Time] += population_abducted[x]
+func add_population(dest_planet: int, population_abducted: Array) -> void:
+	print("adding population: " + str(population_abducted) + "to planet: " + str(dest_planet)) 
+	for spec_id in range(26):
+		print("current value of arr: " + str(Planets[dest_planet][spec_id][Current_Time]))
+		Planets[dest_planet][spec_id][Current_Time + 1] += population_abducted[spec_id]
+		print("new value of arr: " + str(Planets[dest_planet][spec_id][Current_Time + 1]))
 	
 
 #Start of Global Clock
@@ -707,87 +712,54 @@ var Planet_Temperatures = [2,2,2,1,1,1,1,0,0,0]
 # [5] Preferred Temp.   (PT) When the preferred temperature is the same as that of the planet, the carrying capacity of the species for that planet is 1.5x.
 
 #Lotke-Volterra: Population Change in SpeciesA = N*Curren
-var Focus_Const
-var Focus_Planet
-var N
-var Focus_New_Population
-var New_Population_Output
-var Focus_Temperature
-var Focus_K
-var Vetted_New_Population_Output
-func _LV_Equation_Calc(planet_num,focus_id): 
+
+func _LV_Equation_Calc(planet_num,focus_id) -> float: 
 	#focus id is the number id of the Focus Species. For example, 0 is the number id of species A, 1 is of B, 2 is of C, etc. 
 #	Focus_Const is an array with the constants of the species being focused on.
-	Focus_Const=All_Const[focus_id]
+	var Focus_Const=All_Const[focus_id]
 #	Focus Planet is an array with the population ledgers for each population on the Focus Planet (The planet being focused on)
-	Focus_Planet=Planets[planet_num]
-	Focus_Temperature=Planet_Temperatures[planet_num]
+	var Focus_Planet=Planets[planet_num]
+	var Focus_Temperature=Planet_Temperatures[planet_num]
+	
+	var Focus_K
 	#Focus_K is the applied K for the planet, after being adjusted for temperature.
 	if Focus_Const[5] == Focus_Temperature: 
 		Focus_K= 1.5*K[focus_id]
 	else:
 		Focus_K =K[focus_id]
 		
-#	N is an array of the current populations for the Focus Planet. N[0] = Species A population,on Focus Planet, at current time. N[1]= Species B current population, N[2] = C current population, etc. N[0] is a number.
-	N=[Focus_Planet[0][Current_Time],Focus_Planet[1][Current_Time],Focus_Planet[2][Current_Time],Focus_Planet[3][Current_Time],Focus_Planet[4][Current_Time],Focus_Planet[5][Current_Time],Focus_Planet[6][Current_Time],Focus_Planet[7][Current_Time],Focus_Planet[8][Current_Time],Focus_Planet[9][Current_Time],Focus_Planet[10][Current_Time],Focus_Planet[11][Current_Time],Focus_Planet[12][Current_Time],Focus_Planet[13][Current_Time],Focus_Planet[14][Current_Time],Focus_Planet[15][Current_Time],Focus_Planet[16][Current_Time],Focus_Planet[17][Current_Time],Focus_Planet[18][Current_Time],Focus_Planet[19][Current_Time],Focus_Planet[20][Current_Time],Focus_Planet[21][Current_Time],Focus_Planet[22][Current_Time],Focus_Planet[23][Current_Time],Focus_Planet[24][Current_Time],Focus_Planet[25][Current_Time]]
 	
 	#Actual LV Equation
-	New_Population_Output = snapped((N[focus_id]*R[focus_id])*(1-(
-		(N[0]*CompMatrix[focus_id][0])+
-		(N[1]*CompMatrix[focus_id][1])+
-		(N[2]*CompMatrix[focus_id][2])+
-		(N[3]*CompMatrix[focus_id][3])+
-		(N[4]*CompMatrix[focus_id][4])+
-		(N[5]*CompMatrix[focus_id][5])+
-		(N[6]*CompMatrix[focus_id][6])+
-		(N[7]*CompMatrix[focus_id][7])+
-		(N[8]*CompMatrix[focus_id][8])+
-		(N[9]*CompMatrix[focus_id][9])+
-		(N[10]*CompMatrix[focus_id][10])+
-		(N[11]*CompMatrix[focus_id][11])+
-		(N[12]*CompMatrix[focus_id][12])+
-		(N[13]*CompMatrix[focus_id][13])+
-		(N[14]*CompMatrix[focus_id][14])+
-		(N[15]*CompMatrix[focus_id][15])+
-		(N[16]*CompMatrix[focus_id][16])+
-		(N[17]*CompMatrix[focus_id][17])+
-		(N[18]*CompMatrix[focus_id][18])+
-		(N[19]*CompMatrix[focus_id][19])+
-		(N[20]*CompMatrix[focus_id][20])+
-		(N[21]*CompMatrix[focus_id][21])+
-		(N[22]*CompMatrix[focus_id][22])+
-		(N[23]*CompMatrix[focus_id][23])+
-		(N[24]*CompMatrix[focus_id][24])+
-		(N[25]*CompMatrix[focus_id][25])
-		)/Focus_K),.1)
+	var ben_new_pop_output = 0
+	for i in range(26):
+		ben_new_pop_output += Focus_Planet[i][Current_Time] * CompMatrix[focus_id][i]
 	
-	#If new population is under 1, it is considered 0. Also eliminated nonsense negative population numbers.
-	if New_Population_Output < 1:
-		Vetted_New_Population_Output = 0
-	else:
-		Vetted_New_Population_Output=New_Population_Output
-	#.1 is rounding place
+	ben_new_pop_output = (ben_new_pop_output) /	Focus_K
+	ben_new_pop_output = 1 - ben_new_pop_output
+	ben_new_pop_output *= Focus_Planet[focus_id][Current_Time] * R[focus_id]
+	ben_new_pop_output = snapped(ben_new_pop_output,0.1)
+	
+	return max(ben_new_pop_output, 0.0)
 		
+		
+
 			
-func _Increase_Time(dest_planet: int = -1, src_planet: int = -1, population_abducted: Array[int] = [-1]):
+func Increase_Time(dest_planet: int = -1, src_planet: int = -1, population_abducted: Array = [-1]):
 	#encodes the new populations, THEN increases time by one step.
 	#_Increase_Time() can only be called after _Fill_CompMatrix has been called once. 
+	print("Increase time: " + str(dest_planet) + "from: " + str(src_planet))
 	
-	if (src_planet == -1):
+	#Called by planet_manager
+	if (src_planet != -1):
 		remove_population(src_planet,population_abducted)
 	
-	for planet_num in range(10):
-		for focus_id in range(26):
-			_LV_Equation_Calc(planet_num, focus_id)
-			Planets[planet_num][focus_id].append(Vetted_New_Population_Output)
-		print("Planet",planet_num,"Time", Current_Time)
-		print(N)
-	
+	for planet_id in range(10):
+		for spec_id in range(26):
+			Planets[planet_id][spec_id].append(_LV_Equation_Calc(planet_id, spec_id))
 	if (dest_planet != -1):
 		add_population(dest_planet, population_abducted)
+	Current_Time += 1
 	
-	Current_Time=Current_Time+1
-
 
 	
 #region X_Population_All Null assignment
@@ -851,44 +823,8 @@ const DietX_Details = [0,0,0,1,0]
 const DietY_Details = [0,0,0,0,1] 
 const DietZ_Details = [1,1,1,0,1] 
 
-#region Sum Diet Calculation
- #OBSOLETE SumDietX was used for calculating what percent of a species diet the over lap is. If SumDietX is 3, that means that Species X's diet consists of 3 components. Now this calculation is done inside _Find_Overlap_A
-var SumDietA = DietA_Details[0]+DietA_Details[1]+DietA_Details[2]+DietA_Details[3]+DietA_Details[4]
-var SumDietB = DietB_Details[0]+DietB_Details[1]+DietB_Details[2]+DietB_Details[3]+DietB_Details[4]
-var SumDietC = DietC_Details[0]+DietC_Details[1]+DietC_Details[2]+DietC_Details[3]+DietC_Details[4]
-var SumDietD = DietD_Details[0]+DietD_Details[1]+DietD_Details[2]+DietD_Details[3]+DietD_Details[4]
-var SumDietE = DietE_Details[0]+DietE_Details[1]+DietE_Details[2]+DietE_Details[3]+DietE_Details[4]
-var SumDietF = DietF_Details[0]+DietF_Details[1]+DietF_Details[2]+DietF_Details[3]+DietF_Details[4]
-var SumDietG = DietG_Details[0]+DietG_Details[1]+DietG_Details[2]+DietG_Details[3]+DietG_Details[4]
-var SumDietH = DietH_Details[0]+DietH_Details[1]+DietH_Details[2]+DietH_Details[3]+DietH_Details[4]
-var SumDietI = DietI_Details[0]+DietI_Details[1]+DietI_Details[2]+DietI_Details[3]+DietI_Details[4]
-var SumDietJ = DietJ_Details[0]+DietJ_Details[1]+DietJ_Details[2]+DietJ_Details[3]+DietJ_Details[4]
-var SumDietK = DietK_Details[0]+DietK_Details[1]+DietK_Details[2]+DietK_Details[3]+DietK_Details[4]
-var SumDietL = DietL_Details[0]+DietL_Details[1]+DietL_Details[2]+DietL_Details[3]+DietL_Details[4]
-var SumDietM = DietM_Details[0]+DietM_Details[1]+DietM_Details[2]+DietM_Details[3]+DietM_Details[4]
-var SumDietN = DietN_Details[0]+DietN_Details[1]+DietN_Details[2]+DietN_Details[3]+DietN_Details[4]
-var SumDietO = DietO_Details[0]+DietO_Details[1]+DietO_Details[2]+DietO_Details[3]+DietO_Details[4]
-var SumDietP = DietP_Details[0]+DietP_Details[1]+DietP_Details[2]+DietP_Details[3]+DietP_Details[4]
-var SumDietQ = DietQ_Details[0]+DietQ_Details[1]+DietQ_Details[2]+DietQ_Details[3]+DietQ_Details[4]
-var SumDietR = DietR_Details[0]+DietR_Details[1]+DietR_Details[2]+DietR_Details[3]+DietR_Details[4]
-var SumDietS = DietS_Details[0]+DietS_Details[1]+DietS_Details[2]+DietS_Details[3]+DietS_Details[4]
-var SumDietT = DietT_Details[0]+DietT_Details[1]+DietT_Details[2]+DietT_Details[3]+DietT_Details[4]
-var SumDietU = DietU_Details[0]+DietU_Details[1]+DietU_Details[2]+DietU_Details[3]+DietU_Details[4]
-var SumDietV = DietV_Details[0]+DietV_Details[1]+DietV_Details[2]+DietV_Details[3]+DietV_Details[4]
-var SumDietW = DietW_Details[0]+DietW_Details[1]+DietW_Details[2]+DietW_Details[3]+DietW_Details[4]
-var SumDietX = DietX_Details[0]+DietX_Details[1]+DietX_Details[2]+DietX_Details[3]+DietX_Details[4]
-var SumDietY = DietY_Details[0]+DietY_Details[1]+DietY_Details[2]+DietY_Details[3]+DietY_Details[4]
-var SumDietZ = DietZ_Details[0]+DietZ_Details[1]+DietZ_Details[2]+DietZ_Details[3]+DietZ_Details[4]
-
-var SumDietAll = [SumDietA]
-#endregion
-
-#Calculating degree of dietary overlap
-
-
 
 #Global Species Constants
-
 
 #A_Const: Constants for Species A. A_Const[1] = Carrying Capacity. A_Const[2] = Species Size
 # [0] Carrying Capacity (K) 
@@ -979,24 +915,11 @@ func _Fill_CompMatrix():
 			#print("Species", i, "and Species",n,"Complete")
 
 
+
+func _ready() -> void:
+	_Fill_CompMatrix()
 	
 
-
-func _process(_delta: float) -> void:
-	# Called every frame. 'delta' is the elapsed time since the previous frame.
-		#For testing, press Key A once before starting increasing time, in order to fill out competition matrix.
-	if Input.is_action_just_released("KEY_P"):
-		print("Key P Pressed")
-		_Fill_CompMatrix()
-		print("CompMatrix:")
-		print(CompMatrix)
-	#Time increase everytime T Key is released (for testing)
-	if Input.is_action_just_released("KEY_T"):
-		#print("Planet0 at Time ",Current_Time)
-		#print(Planets[0])
-		_Increase_Time()
-		#print(N)
-		
 
 	
 

@@ -2,28 +2,28 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bvfl3jc1suiqd"
-path="res://.godot/imported/MegatransdemoRegular-8M9B0.otf-682e4e127da911aff635e454536c876b.fontdata"
+uid="uid://c4sn1gblh8uwa"
+path="res://.godot/imported/NO_ALIASING.otf-d922eccbdf34aaa1481d83d7bc0392e0.fontdata"
 
 [deps]
 
-source_file="res://themes_fonts/MegatransdemoRegular-8M9B0.otf"
-dest_files=["res://.godot/imported/MegatransdemoRegular-8M9B0.otf-682e4e127da911aff635e454536c876b.fontdata"]
+source_file="res://themes_fonts/NO_ALIASING.otf"
+dest_files=["res://.godot/imported/NO_ALIASING.otf-d922eccbdf34aaa1481d83d7bc0392e0.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=0
-generate_mipmaps=true
-disable_embedded_bitmaps=true
-multichannel_signed_distance_field=true
+generate_mipmaps=false
+disable_embedded_bitmaps=false
+multichannel_signed_distance_field=false
 msdf_pixel_range=20
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=0
 subpixel_positioning=1
-keep_rounding_remainders=false
+keep_rounding_remainders=true
 oversampling=5.0
 Fallbacks=null
 fallbacks=[]
