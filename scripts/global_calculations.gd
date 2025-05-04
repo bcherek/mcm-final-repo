@@ -739,7 +739,8 @@ func _LV_Equation_Calc(planet_num,focus_id) -> float:
 	ben_new_pop_output *= Focus_Planet[focus_id][Current_Time] * R[focus_id]
 	ben_new_pop_output = snapped(ben_new_pop_output,0.1)
 	
-	return max(ben_new_pop_output, 0.0)
+	if (ben_new_pop_output < 1): return 0.0
+	return ben_new_pop_output
 		
 		
 

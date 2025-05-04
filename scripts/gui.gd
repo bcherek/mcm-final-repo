@@ -74,19 +74,29 @@ func populate_gui(speciesID: int):
 
 @onready var src_planet: TextureRect = $VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer/src_planet
 @onready var dest_planet: TextureRect = $VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer/dest_planet
+@onready var ferry_text: Label = $VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/ferry_text
+
+
+func new_day() -> void:
+	set_src_picture(-1)
+	set_dest_picture(-1)
+	ferry_text.text = "No Voyage Planned"
+	
+	
 
 func set_src_picture(planet_id: int) -> void:
 	if (planet_id == -1):
 		src_planet.texture = Constants.UNKNOWN_PLANET
 	else:
-		src_planet.texture = Constants.PLAN_PHOTOS[planet_id] 
+		src_planet.texture = Constants.PLAN_PHOTOS[planet_id]
+		ferry_text.text = "Ferry"
 
 func set_dest_picture(planet_id: int) -> void:
 	if (planet_id == -1):
 		dest_planet.texture = Constants.UNKNOWN_PLANET
 	else:
 		dest_planet.texture = Constants.PLAN_PHOTOS[planet_id] 
-
+		ferry_text.text = "Ferry"
 
 #button pressed to go to left species
 func _on_left_button_pressed() -> void:

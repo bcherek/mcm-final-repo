@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://474rxj6f7km0"]
 
 [ext_resource type="Script" uid="uid://cpjr0rblhytgc" path="res://scripts/planet.gd" id="1_0k1rn"]
-[ext_resource type="Texture2D" uid="uid://cb4e7can11bwj" path="res://assets/planet_pictures/planet_32px_placeholder.png" id="2_48b8c"]
+[ext_resource type="Texture2D" uid="uid://dsxpy2jq3mg2e" path="res://assets/planet_pictures/planet_1.png" id="2_0k1rn"]
 [ext_resource type="Theme" uid="uid://csh6pvlo4dyei" path="res://themes_fonts/game_theme.tres" id="3_3s4jt"]
 [ext_resource type="Script" uid="uid://btw7g05awn214" path="res://scripts/tooltip_script.gd" id="4_1wmcx"]
 
@@ -15,16 +15,17 @@ size = Vector2(116.2, 117.4)
 script = ExtResource("1_0k1rn")
 
 [node name="planet_sprite" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
-texture = ExtResource("2_48b8c")
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("2_0k1rn")
 
-[node name="planet_hitbox" type="Area2D" parent="planet_sprite"]
+[node name="planet_hitbox" type="Area2D" parent="."]
+scale = Vector2(5.235, 5.235)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="planet_sprite/planet_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="planet_hitbox"]
 position = Vector2(0.4, 0.2)
 shape = SubResource("CircleShape2D_a75xc")
 
-[node name="Tooltip_main" type="PanelContainer" parent="planet_sprite/planet_hitbox/CollisionShape2D"]
+[node name="Tooltip_main" type="PanelContainer" parent="planet_hitbox/CollisionShape2D"]
 visibility_layer = 2
 z_index = 1
 offset_right = 119.0
@@ -32,10 +33,10 @@ offset_bottom = 118.0
 theme = ExtResource("3_3s4jt")
 script = ExtResource("4_1wmcx")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main"]
+[node name="ScrollContainer" type="ScrollContainer" parent="planet_hitbox/CollisionShape2D/Tooltip_main"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
@@ -43,47 +44,47 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="planet label" type="Label" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="planet label" type="Label" parent="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_3s4jt")
 text = "Planet planet_name"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="climate" type="Label" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="climate" type="Label" parent="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_3s4jt")
 text = "Climate: XXXXX"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="set_dest" type="Button" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="set_dest" type="Button" parent="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Set Destination"
 
-[node name="pops header" type="Label" parent="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="pops header" type="Label" parent="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_3s4jt")
 text = "Populations:"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="tooltip_hitbox" type="Area2D" parent="planet_sprite/planet_hitbox/CollisionShape2D"]
+[node name="tooltip_hitbox" type="Area2D" parent="planet_hitbox/CollisionShape2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="planet_sprite/planet_hitbox/CollisionShape2D/tooltip_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="planet_hitbox/CollisionShape2D/tooltip_hitbox"]
 z_index = 1
 position = Vector2(59.6, 58)
 shape = SubResource("RectangleShape2D_a75xc")
 debug_color = Color(0.7633, 0.443666, 0.208756, 0.42)
 
-[connection signal="mouse_entered" from="planet_sprite/planet_hitbox" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="planet_sprite/planet_hitbox" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="mouse_entered" from="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main" to="." method="_on_tooltip_main_mouse_entered"]
-[connection signal="mouse_exited" from="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main" to="." method="_on_tooltip_main_mouse_exited"]
-[connection signal="pressed" from="planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer/set_dest" to="." method="_on_set_dest_pressed"]
-[connection signal="mouse_entered" from="planet_sprite/planet_hitbox/CollisionShape2D/tooltip_hitbox" to="." method="_on_tooltip_hitbox_mouse_entered"]
-[connection signal="mouse_exited" from="planet_sprite/planet_hitbox/CollisionShape2D/tooltip_hitbox" to="." method="_on_tooltip_hitbox_mouse_exited"]
+[connection signal="mouse_entered" from="planet_hitbox" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="planet_hitbox" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="planet_hitbox/CollisionShape2D/Tooltip_main" to="." method="_on_tooltip_main_mouse_entered"]
+[connection signal="mouse_exited" from="planet_hitbox/CollisionShape2D/Tooltip_main" to="." method="_on_tooltip_main_mouse_exited"]
+[connection signal="pressed" from="planet_hitbox/CollisionShape2D/Tooltip_main/ScrollContainer/MarginContainer/VBoxContainer/set_dest" to="." method="_on_set_dest_pressed"]
+[connection signal="mouse_entered" from="planet_hitbox/CollisionShape2D/tooltip_hitbox" to="." method="_on_tooltip_hitbox_mouse_entered"]
+[connection signal="mouse_exited" from="planet_hitbox/CollisionShape2D/tooltip_hitbox" to="." method="_on_tooltip_hitbox_mouse_exited"]

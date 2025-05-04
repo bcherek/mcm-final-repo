@@ -49,7 +49,7 @@ func tell_global_to_inc_time(plan: Planet, abduct_pop_arr: Array):
 	for child: Planet in get_children():
 		child.empty_abduct_arr()
 	abduct_planet_dest_id = -1
-	gui.set_dest_picture(abduct_planet_dest_id)
+	gui.new_day()
 	gui.increase_year()
 	
 func disable_addtl_child_tooltips(planet: Planet):

@@ -10,7 +10,7 @@ var pop_btns: Array[SpeciesModifier]
 @onready var pops_header: Label = $"ScrollContainer/MarginContainer/VBoxContainer/pops header"
 @onready var v_box_container: VBoxContainer = $ScrollContainer/MarginContainer/VBoxContainer
 
-@onready var planet: Planet = $"../../../.."
+@onready var planet: Planet = $"../../.."
 
 const SPECIES_MODIFIER = preload("res://scenes/species_modifier.tscn")
 

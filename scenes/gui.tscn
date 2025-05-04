@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcudmwm5734ui"]
+[gd_scene load_steps=6 format=3 uid="uid://bcudmwm5734ui"]
 
 [ext_resource type="Theme" uid="uid://duv45flj7i4ka" path="res://themes_fonts/gui_theme.tres" id="1_80edf"]
 [ext_resource type="Script" uid="uid://ckuqcturpfe5k" path="res://scripts/gui.gd" id="1_cor1f"]
 [ext_resource type="Texture2D" uid="uid://btw8yjeiw4a3" path="res://assets/species_pictures/spec_0.jpg" id="2_6lon5"]
 [ext_resource type="LabelSettings" uid="uid://cknsth6gxm321" path="res://themes_fonts/label_body_text.tres" id="3_q8o8l"]
-[ext_resource type="Texture2D" uid="uid://cb4e7can11bwj" path="res://assets/planet_pictures/planet_32px_placeholder.png" id="3_u77ya"]
 [ext_resource type="Texture2D" uid="uid://v08y1cdgrbl2" path="res://assets/ui_pictures/right_arrow_placeholder.png" id="4_jf511"]
 
 [node name="Gui" type="Control"]
@@ -56,7 +55,7 @@ mouse_filter = 2
 
 [node name="next_day_menu" type="Panel" parent="VBoxContainer/bottom_pane"]
 clip_contents = true
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -71,9 +70,9 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer"]
+[node name="ferry_text" type="Label" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 3
 theme = ExtResource("1_80edf")
 text = "Ferry"
 horizontal_alignment = 1
@@ -87,7 +86,7 @@ alignment = 1
 [node name="src_planet" type="TextureRect" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_u77ya")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="arrow" type="TextureRect" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer"]
@@ -97,7 +96,7 @@ texture = ExtResource("4_jf511")
 [node name="dest_planet" type="TextureRect" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_u77ya")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="confirm_button" type="Button" parent="VBoxContainer/bottom_pane/next_day_menu/VBoxContainer"]

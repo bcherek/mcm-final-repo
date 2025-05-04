@@ -22,6 +22,5 @@ const SPEC_FLAVORTEXTS = ["flavor 1", "flavor 2", "flavor 3"]
 
 ##unknown species photo
 const UNKNOWN_SPEC = preload("res://assets/species_pictures/unknown_spec.png")
-
 ##No planet photo
-const UNKNOWN_PLANET = preload("res://assets/planet_pictures/planet_32px_placeholder.png")
+const UNKNOWN_PLANET = preload("res://assets/planet_pictures/2048_empty.png")

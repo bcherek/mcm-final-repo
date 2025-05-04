@@ -16,9 +16,9 @@ signal abduct_gui
 signal planet_data_requested
 signal be_destination
 
-@onready var tooltip_main: PanelContainer = $planet_sprite/planet_hitbox/CollisionShape2D/Tooltip_main
-@onready var planet_hitbox: Area2D = $planet_sprite/planet_hitbox
-@onready var tooltip_hitbox: Area2D = $planet_sprite/planet_hitbox/CollisionShape2D/tooltip_hitbox
+@onready var tooltip_main: PanelContainer = $planet_hitbox/CollisionShape2D/Tooltip_main
+@onready var planet_hitbox: Area2D = $planet_hitbox
+@onready var tooltip_hitbox: Area2D = $planet_hitbox/CollisionShape2D/tooltip_hitbox
 @export var planet_ID: int = -1
 @onready var planet_sprite: Sprite2D = $planet_sprite
 
