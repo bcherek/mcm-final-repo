@@ -26,6 +26,7 @@ position = Vector2(0.4, 0.2)
 shape = SubResource("CircleShape2D_a75xc")
 
 [node name="Tooltip_main" type="PanelContainer" parent="planet_hitbox/CollisionShape2D"]
+visible = false
 visibility_layer = 2
 z_index = 1
 offset_right = 119.0

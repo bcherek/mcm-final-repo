@@ -1,6 +1,9 @@
 extends Control
 
 var population: Array
+
+var prev_population: Array
+
 var planet_name: String
 var climate: String
 var pop_btns: Array[SpeciesModifier]
@@ -26,6 +29,8 @@ func set_planet_info(dict: Dictionary) -> void:
 	print("Tooltip: set_planet_info")
 	planet_name = dict["planet_name"]
 	population = dict["population"]
+	prev_population = dict["prev_population"]
+	
 	climate = dict["climate"]
 	populate_labels()
 	
@@ -40,6 +45,16 @@ func populate_labels() -> void:
 		#pop_btns[i].free()
 	
 	
+func get_pop_trend_string(curr_pop: float, prev_pop: float) -> Dictionary:
+	var percent_change = ((curr_pop - prev_pop) / (prev_pop)) * 100
+	
+	if (abs(percent_change) < 5):
+		return {"string": "stable", "color": "white"}
+	elif (percent_change < -5):
+		return {"string": str(snapped(percent_change,0.1)) + "%", "color": Color.RED}
+	else:
+		return {"string": "+" + str(snapped(percent_change,0.1)) + "%", "color": Color.GREEN}
+	
 func create_pop_btns() -> void:
 	for i in range(len(population)):
 		if (pop_btns[i]):
@@ -47,6 +62,9 @@ func create_pop_btns() -> void:
 			if (population[i] == 0):
 				pop_btns[i].visible = false
 			pop_btns[i].update_spec_label()
+			var x = get_pop_trend_string(population[i], prev_population[i])
+			print(x["string"])
+			pop_btns[i].update_trend_label(x["string"], x["color"])
 			
 		if (population[i] != 0 && !pop_btns[i]):
 			var spec_mod: SpeciesModifier = SPECIES_MODIFIER.instantiate()
@@ -82,4 +100,4 @@ func pop_climate_vals() -> void:
 	climate_label.text = "Climate: " + climate
 
 func set_planet_name():
-	planet_label.text = "Planet " + planet_name
+	planet_label.text = planet_name

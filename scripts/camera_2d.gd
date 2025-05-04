@@ -4,9 +4,9 @@ extends Camera2D
 const DEAD_ZONE: float = 0.6
 
 
-var zoom_min = Vector2(.5,.5)
+var zoom_min = Vector2(.2,.2)
 var zoom_max = Vector2(2,2)
-var zoom_speed = Vector2(.2,.2)
+var zoom_speed = Vector2(.05,.05)
 var des_zoom = zoom
 
 var arrow_speed = 1000
@@ -32,16 +32,16 @@ func _process(delta: float) -> void:
 
 	zoom = lerp(zoom, des_zoom, 0.2)
 	#$background.scale = Vector2(2,2) - zoom
-	
-	if Input.is_action_pressed("up"):
-		position.y -= arrow_speed * delta
-	if Input.is_action_pressed("down"):
-		position.y += arrow_speed * delta
-	if Input.is_action_pressed("right"):
-		position.x += arrow_speed * delta
-	if Input.is_action_pressed("left"):
-		position.x -= arrow_speed * delta
-		
+	#
+	#if Input.is_action_pressed("up"):
+		#position.y -= arrow_speed * delta
+	#if Input.is_action_pressed("down"):
+		#position.y += arrow_speed * delta
+	#if Input.is_action_pressed("right"):
+		#position.x += arrow_speed * delta
+	#if Input.is_action_pressed("left"):
+		#position.x -= arrow_speed * delta
+		#
 
 func _unhandled_input(event: InputEvent) -> void:
 	#handle zoom based on scroll event

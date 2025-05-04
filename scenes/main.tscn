@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bf55hbtsvbfvj"]
 
 [ext_resource type="Script" uid="uid://bfyegb3e0iyn2" path="res://scripts/camera_2d.gd" id="2_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://7xn32br3fycj" path="res://scenes/GlobalCalculations.tscn" id="2_tefeu"]
-[ext_resource type="Texture2D" uid="uid://dxsxvop4wrnkf" path="res://assets/background.jpg" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cr60ktp8if5cr" path="res://scenes/GlobalCalculations.tscn" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://cadyvxiso6f4b" path="res://assets/background.png" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://474rxj6f7km0" path="res://scenes/planet.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bcudmwm5734ui" path="res://scenes/gui.tscn" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://nqq5ude1c4pp" path="res://scripts/planet_manager.gd" id="6_o6xl0"]
@@ -25,19 +25,51 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_tbgi4")
 
 [node name="background" type="Sprite2D" parent="Camera2D"]
-scale = Vector2(2, 2)
-texture = ExtResource("3_tefeu")
+scale = Vector2(2, 2.00751)
+texture = ExtResource("4_tipki")
 
 [node name="Planet_Manager" type="Node" parent="."]
 script = ExtResource("6_o6xl0")
 
-[node name="Planet" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+[node name="Planet0" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
 position = Vector2(-436, 52)
 planet_ID = 0
 
-[node name="Planet2" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+[node name="Planet1" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
 position = Vector2(-86, 296)
 planet_ID = 1
+
+[node name="Planet2" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(-284, -462)
+planet_ID = 2
+
+[node name="Planet3" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(121, 728)
+planet_ID = 3
+
+[node name="Planet4" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(-834, -387)
+planet_ID = 4
+
+[node name="Planet5" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(453, -108)
+planet_ID = 5
+
+[node name="Planet6" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(104, -471)
+planet_ID = 6
+
+[node name="Planet7" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(691, 617)
+planet_ID = 7
+
+[node name="Planet8" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(907, -276)
+planet_ID = 8
+
+[node name="Planet9" parent="Planet_Manager" instance=ExtResource("5_o6xl0")]
+position = Vector2(-786, 531)
+planet_ID = 9
 
 [node name="Ship_Manager" type="Node" parent="."]
 script = ExtResource("8_tipki")

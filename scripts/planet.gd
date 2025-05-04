@@ -9,6 +9,7 @@ var climate: String
 var in_tooltip: bool
 var allow_tooltips: bool
 
+var prev_population: Array
 
 signal tooltip_requested
 signal tooltip_dismissed
@@ -52,10 +53,13 @@ func set_planet_data(input: Dictionary) -> void:
 	#Called by the signal planet_data_requested
 	print("Planet: set_planet_data")
 	population = input["pops"]
+	
+	prev_population = input["prev_population"]
+	
 	planet_name = input["planet_name"]
 	climate = input["climate"]
 	allow_tooltips = true
-	tooltip_main.set_planet_info({"planet_name": planet_name, "population": population, "climate": climate})
+	tooltip_main.set_planet_info({"planet_name": planet_name, "population": population, "climate": climate, "prev_population": prev_population})
 	tooltip_main.visible = true
 	tooltip_hitbox.visible = true
 

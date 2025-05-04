@@ -17,6 +17,7 @@ offset_right = -1838.0
 offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.1
 theme = ExtResource("1_swmmm")
@@ -25,8 +26,19 @@ script = ExtResource("2_ft81a")
 
 [node name="species_name" type="Label" parent="."]
 layout_mode = 2
+size_flags_horizontal = 2
 theme = ExtResource("1_swmmm")
 text = "species_latin: xxxx"
+
+[node name="label" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_swmmm")
+bbcode_enabled = true
+text = "stable"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
 
 [node name="spacer" type="Control" parent="."]
 clip_contents = true

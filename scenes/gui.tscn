@@ -51,6 +51,7 @@ mouse_filter = 2
 
 [node name="bottom_pane" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="next_day_menu" type="Panel" parent="VBoxContainer/bottom_pane"]
@@ -74,7 +75,7 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_80edf")
-text = "Ferry"
+text = "No Voyage Planned"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -139,6 +140,7 @@ mouse_filter = 1
 text = "<-"
 
 [node name="species info" type="ScrollContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer"]
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
@@ -154,6 +156,15 @@ text = "SHOULD NOT SEE THIS"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="species latin name" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 16
+text = "name name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
@@ -166,22 +177,82 @@ texture = ExtResource("2_6lon5")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="species latin name" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+[node name="universal_pop" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
 theme = ExtResource("1_80edf")
-theme_override_font_sizes/font_size = 16
-text = "name name"
+theme_override_font_sizes/font_size = 26
+text = "Universal Population:"
 horizontal_alignment = 1
-autowrap_mode = 3
+
+[node name="num_universal_pop" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 26
+text = "pop_num"
+horizontal_alignment = 1
+
+[node name="mass_hbox" type="HBoxContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+
+[node name="mass" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/mass_hbox"]
+layout_mode = 2
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 20
+text = "Mass:"
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/mass_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/mass_hbox"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "30"
+horizontal_alignment = 2
+
+[node name="diet_hbox" type="HBoxContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+
+[node name="mass" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/diet_hbox"]
+layout_mode = 2
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 20
+text = "Diet:"
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/diet_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="climate_hbox" type="HBoxContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
+layout_mode = 2
+
+[node name="mass" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/climate_hbox"]
+layout_mode = 2
+theme = ExtResource("1_80edf")
+theme_override_font_sizes/font_size = 20
+text = "Climate:"
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/climate_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/climate_hbox"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "30"
+horizontal_alignment = 2
 
 [node name="species flavortext" type="Label" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_80edf")
 theme_override_font_sizes/font_size = 16
-text = "body text body text body yadadadadad flabor stuff world building did you know that cashews come from a fruit?"
+text = "
+body text body text body yadadadadad flabor stuff world building did you know that cashews come from a fruit?"
 label_settings = ExtResource("3_q8o8l")
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="right button" type="Button" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer"]
