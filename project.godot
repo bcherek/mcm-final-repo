@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="planet_map"
-run/main_scene="uid://bf55hbtsvbfvj"
+run/main_scene="uid://vnmhqc4fhoos"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

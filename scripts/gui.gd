@@ -34,7 +34,7 @@ func populate_abduct_display(abduct_pops: Array, planet: Planet) -> void:
 	
 	for i in range(len(abduct_pops)):
 		if (abduct_pops[i] != 0):
-			my_str += str(Constants.SPEC_LATINS[i]) + ": " + str(abduct_pops[i]) + "\n"
+			my_str += str(Constants.SPEC_NAMES[i]) + ": " + str(abduct_pops[i]) + "\n"
 	
 	set_src_picture(planet.planet_ID)
 	

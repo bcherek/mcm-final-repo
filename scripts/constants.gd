@@ -21,7 +21,7 @@ static func get_pref_temp_str(spec_id: int) -> String:
 #Planet Data (Non-computational; computational data like diet are in Global_Processing)
 
 const TEMP_NAMES: Array[String] = ["Frigid", "Temperate", "Scorching"] 
-const PLAN_NAMES = ["pink","KRAK-49b","SHELEG-7","yellow","moon looking","rings","orange","grass","blue","more blue"]
+const PLAN_NAMES = ["RO-3E","KRAK-49b","SHELEG-7","FZZ-8","ROCOCO","MEKUDESH-2b","O RANG-7","TERRA-39c","KARER-3","DOT-3"]
 const PLAN_PHOTOS = [preload("res://assets/planet_pictures/planet_0.png"),preload("res://assets/planet_pictures/planet_1.png"),preload("res://assets/planet_pictures/planet_2.png"),preload("res://assets/planet_pictures/planet_3.png"),preload("res://assets/planet_pictures/planet_4.png"),preload("res://assets/planet_pictures/planet_5.png"),preload("res://assets/planet_pictures/planet_6.png"),preload("res://assets/planet_pictures/planet_7.png"),preload("res://assets/planet_pictures/planet_8.png"), preload("res://assets/planet_pictures/planet_9.png")]
 const DIET_PHOTOS = [preload("res://assets/food_pictures/food_0.png"), preload("res://assets/food_pictures/food_1.png"), preload("res://assets/food_pictures/food_2.png"), preload("res://assets/food_pictures/food_3.png"), preload("res://assets/food_pictures/food_4.png")]
 
@@ -31,7 +31,7 @@ const DIET_PHOTOS = [preload("res://assets/food_pictures/food_0.png"), preload("
 
 
 #Species Data (Non-computational; computational data like diet are in Global_Processing)const SPEC_NAMES: Array[String] = ["spec a", "spec b", "spec c", "spec d", "spec e", "spec f", "spec g", "spec h", "spec i", "spec j", "spec k", "spec l", "spec m", "spec n", "spec o", "spec p", "spec q", "spec r", "spec s", "spec t", "spec u", "spec v", "spec w", "spec x", "spec y", "spec z"]
-const SPEC_NAMES: Array[String] = ["Bacti", "Tangerang", "Yellow Tunler", "Trispini", "Oort", "Torkin", "Tera", "Alfloofa","Hoppy", "Wheelbert", "Winged Wobb", "Armalet", "Green Lakely", "Beanling", "Zigbird", "Puff", "Steck", "Skorl", "Scalar", "Flurb", "Sproing", "Gurg", "Bluble", "Trangle", "Fragum", "Plurb"]
+const SPEC_NAMES: Array[String] = ["Bacti", "Tangerang", "Tunler", "Trispini", "Oort", "Torkin", "Tera", "Alfloofa","Hoppy", "Wheelbert", "Wobb", "Armalet", "Lakely", "Beanling", "Zigbird", "Puff", "Steck", "Skorl", "Scalar", "Flurb", "Sproing", "Gurg", "Bluble", "Trangle", "Fragum", "Plurb"]
 const SPEC_LATINS: Array[String] = ["Bactus eria", "Tangus clementus", "Terra tubulus", "Figita trioculus", "Psychrolutes astra", "Ave abnormalus", "Teras hideos", "Mapela syropa", "Hop hop", "Rolla rolla", "Flyvius josephus", "Fortifa maximus", "Aquanos veridis", "Leguma kitniyoti", "Ave zigia", "Nimbus zakeno", "Arbor brancha", "Rodentra astra", "Draconis rex", "Flurbus flurbi", "Compres flingi", "Homo gurgus", "Repollo cyanos", "Trina anglus", "Splitoidal squamous", "Indigo viole"]
 const SPEC_PHOTOS = [
 	preload("res://assets/species_pictures/spec_0.png"),
