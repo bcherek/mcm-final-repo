@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://duv45flj7i4ka" path="res://themes_fonts/gui_theme.tres" id="1_80edf"]
 [ext_resource type="Script" uid="uid://ckuqcturpfe5k" path="res://scripts/gui.gd" id="1_cor1f"]
-[ext_resource type="Texture2D" uid="uid://btw8yjeiw4a3" path="res://assets/species_pictures/spec_0.jpg" id="2_6lon5"]
+[ext_resource type="Texture2D" uid="uid://b04tqek3u7u8e" path="res://assets/species_pictures/spec_0.png" id="2_6lon5"]
 [ext_resource type="LabelSettings" uid="uid://cknsth6gxm321" path="res://themes_fonts/label_body_text.tres" id="3_q8o8l"]
 [ext_resource type="Texture2D" uid="uid://v08y1cdgrbl2" path="res://assets/ui_pictures/right_arrow_placeholder.png" id="4_jf511"]
 
@@ -125,6 +125,7 @@ theme_override_font_sizes/font_size = 25
 text = "Species Log"
 
 [node name="species_display_panel" type="PanelContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -140,7 +141,6 @@ mouse_filter = 1
 text = "<-"
 
 [node name="species info" type="ScrollContainer" parent="VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer"]
-clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0

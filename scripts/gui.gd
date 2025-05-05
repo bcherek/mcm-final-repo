@@ -3,7 +3,7 @@ extends Control
 signal confirm_abduct
 
 var current_spec_ID = 0
-const NUM_SPEC = 3
+const NUM_SPEC = 26
 
 @onready var species_display_panel: PanelContainer = $VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel
 @onready var species_common_name: Label = $"VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/Species Common Name"
@@ -19,9 +19,11 @@ const NUM_SPEC = 3
 
 @onready var cargo_bay_label: Label = $VBoxContainer/cargo_bay_label
 
-var curr_time_cosmetic = 0
+var curr_time_cosmetic = 29000
 var curr_src_planet = null
 var curr_abduct_arr = [-1]
+
+
 
 
 func populate_abduct_display(abduct_pops: Array, planet: Planet) -> void:
@@ -50,10 +52,8 @@ func empty_abduct_display():
 @onready var time_label: Label = $VBoxContainer/time_label
 func increase_year():
 	curr_time_cosmetic += 1
-	time_label.text = "Year " + str(29000 + curr_time_cosmetic)
+	time_label.text = "Year " + str(curr_time_cosmetic)
 
-func _ready() -> void:
-	species_display_panel.visible = false
 
 #button pressed to show the menu
 func _on_open_menu_pressed() -> void:
@@ -66,26 +66,53 @@ func populate_gui(speciesID: int):
 	current_spec_ID = speciesID
 	#if (known_species[current_spec_ID]):
 		## The player knows about the given species. Populate the gui accordingly.
+	enable_hboxes()
 	species_photo.texture = Constants.SPEC_PHOTOS[current_spec_ID]
 	species_common_name.text = Constants.SPEC_NAMES[current_spec_ID]
 	species_latin_name.text = Constants.SPEC_LATINS[current_spec_ID]
-	species_flavortext.text = Constants.SPEC_FLAVORTEXTS[current_spec_ID]
-	mass_label.text = generate_size_label(Constants.get_size_index(current_spec_ID))
-	climate_label.text = Constants.get_pref_temp_str(current_spec_ID)
-	num_universal_pop.text = str(GlobalProcessing.get_universal_pop(current_spec_ID))
-	
-	#Logic to add the diet images
+
 	#Delete existing diet images
 	for child in diet_hbox.get_children():
 		if child is TextureRect:
-			child.queue_free()
+			child.queue_free()	
 	
-	for elt in Constants.get_diet_images(current_spec_ID):
-		var rect = TextureRect.new()
-		rect.texture = elt
-		rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		diet_hbox.get_child(1).add_sibling(rect) # Add the photo after the spacer
+	#If the species is extinct
+	var extinction_yr = GlobalProcessing.extinction_years[current_spec_ID]
+	if (extinction_yr != -1):
+		num_universal_pop.text = "EXTINCT " + str(extinction_yr + 29000)
+		disable_hboxes()
+	else:
+		num_universal_pop.text = str(GlobalProcessing.get_universal_pop(current_spec_ID))
+		mass_label.text = generate_size_label(Constants.get_size_index(current_spec_ID))
+		climate_label.text = Constants.get_pref_temp_str(current_spec_ID)
+		species_flavortext.text = Constants.SPEC_FLAVORTEXTS[current_spec_ID]
+
+		#Logic to add the diet images
+		for elt in Constants.get_diet_images(current_spec_ID):
+			var rect = TextureRect.new()
+			rect.texture = elt
+			rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+			diet_hbox.get_child(1).add_sibling(rect) # Add the photo after the spacer
 	
+@onready var mass_hbox: HBoxContainer = $"VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/mass_hbox"
+@onready var climate_hbox: HBoxContainer = $"VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/climate_hbox"
+@onready var universal_pop: Label = $"VBoxContainer/bottom_pane/VBoxContainer2/species_display_panel/HBoxContainer/species info/VBoxContainer/universal_pop"
+
+func disable_hboxes() -> void:
+	mass_hbox.visible = false
+	diet_hbox.visible = false
+	climate_hbox.visible = false
+	universal_pop.visible = false
+	species_flavortext.visible = false
+
+func enable_hboxes() -> void:
+	mass_hbox.visible = true
+	diet_hbox.visible = true
+	climate_hbox.visible = true
+	universal_pop.visible = true
+	species_flavortext.visible = true
+	
+
 @onready var src_planet: TextureRect = $VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer/src_planet
 @onready var dest_planet: TextureRect = $VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/HBoxContainer/dest_planet
 @onready var ferry_text: Label = $VBoxContainer/bottom_pane/next_day_menu/VBoxContainer/ferry_text

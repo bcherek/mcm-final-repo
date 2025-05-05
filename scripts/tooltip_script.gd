@@ -69,7 +69,7 @@ func create_pop_btns() -> void:
 		if (population[i] != 0 && !pop_btns[i]):
 			var spec_mod: SpeciesModifier = SPECIES_MODIFIER.instantiate()
 			pops_header.add_sibling(spec_mod)
-			spec_mod.spec_name = Constants.SPEC_LATINS[i]
+			spec_mod.spec_name = Constants.SPEC_NAMES[i]
 			spec_mod.spec_id = i
 			spec_mod.spec_displayed_pop = str(population[i])
 			spec_mod.update_spec_label()

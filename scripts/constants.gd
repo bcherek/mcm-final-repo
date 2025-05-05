@@ -31,15 +31,37 @@ const DIET_PHOTOS = [preload("res://assets/food_pictures/food_0.png"), preload("
 
 
 #Species Data (Non-computational; computational data like diet are in Global_Processing)const SPEC_NAMES: Array[String] = ["spec a", "spec b", "spec c", "spec d", "spec e", "spec f", "spec g", "spec h", "spec i", "spec j", "spec k", "spec l", "spec m", "spec n", "spec o", "spec p", "spec q", "spec r", "spec s", "spec t", "spec u", "spec v", "spec w", "spec x", "spec y", "spec z"]
-const SPEC_NAMES: Array[String] = ['spec a', 'spec b', 'spec c', 'spec d', 'spec e', 'spec f', 'spec g', 'spec h', 'spec i', 'spec j', 'spec k', 'spec l', 'spec m', 'spec n', 'spec o', 'spec p', 'spec q', 'spec r', 'spec s', 'spec t', 'spec u', 'spec v', 'spec w', 'spec x', 'spec y', 'spec z']
-
-
-const SPEC_LATINS: Array[String] = ["lat a", "lat b", "lat c", "lat d", "lat e", "lat f", "lat g", "lat h", "lat i", "lat j", "lat k", "lat l", "lat m", "lat n", "lat o", "lat p", "lat q", "lat r", "lat s", "lat t", "lat u", "lat v", "lat w", "lat x", "lat y", "lat z"]
+const SPEC_NAMES: Array[String] = ["Bacti", "Tangerang", "Yellow Tunler", "Trispini", "Oort", "Torkin", "Tera", "Alfloofa","Hoppy", "Wheelbert", "Winged Wobb", "Armalet", "Green Lakely", "Beanling", "Zigbird", "Puff", "Steck", "Skorl", "Scalar", "Flurb", "Sproing", "Gurg", "Bluble", "Trangle", "Fragum", "Plurb"]
+const SPEC_LATINS: Array[String] = ["Bactus eria", "Tangus clementus", "Terra tubulus", "Figita trioculus", "Psychrolutes astra", "Ave abnormalus", "Teras hideos", "Mapela syropa", "Hop hop", "Rolla rolla", "Flyvius josephus", "Fortifa maximus", "Aquanos veridis", "Leguma kitniyoti", "Ave zigia", "Nimbus zakeno", "Arbor brancha", "Rodentra astra", "Draconis rex", "Flurbus flurbi", "Compres flingi", "Homo gurgus", "Repollo cyanos", "Trina anglus", "Splitoidal squamous", "Indigo viole"]
 const SPEC_PHOTOS = [
-preload("res://assets/species_pictures/spec_0.jpg"),
-preload("res://assets/species_pictures/spec_1.jpg"),
-preload("res://assets/species_pictures/spec_2.jpg")]
-const SPEC_FLAVORTEXTS = ["flavor 1", "flavor 2", "flavor 3"]
+	preload("res://assets/species_pictures/spec_0.png"),
+	preload("res://assets/species_pictures/spec_2.png"),
+	preload("res://assets/species_pictures/spec_1.png"),
+	preload("res://assets/species_pictures/spec_3.png"),
+	preload("res://assets/species_pictures/spec_4.png"),
+	preload("res://assets/species_pictures/spec_5.png"),
+	preload("res://assets/species_pictures/spec_6.png"),
+	preload("res://assets/species_pictures/spec_7.png"),
+	preload("res://assets/species_pictures/spec_8.png"),
+	preload("res://assets/species_pictures/spec_9.png"),
+	preload("res://assets/species_pictures/spec_10.png"),
+	preload("res://assets/species_pictures/spec_11.png"),
+	preload("res://assets/species_pictures/spec_12.png"),
+	preload("res://assets/species_pictures/spec_13.png"),
+	preload("res://assets/species_pictures/spec_14.png"),
+	preload("res://assets/species_pictures/spec_15.png"),
+	preload("res://assets/species_pictures/spec_16.png"),
+	preload("res://assets/species_pictures/spec_17.png"),
+	preload("res://assets/species_pictures/spec_18.png"),
+	preload("res://assets/species_pictures/spec_19.png"),
+	preload("res://assets/species_pictures/spec_20.png"),
+	preload("res://assets/species_pictures/spec_21.png"),
+	preload("res://assets/species_pictures/spec_22.png"),
+	preload("res://assets/species_pictures/spec_23.png"),
+	preload("res://assets/species_pictures/spec_24.png"),
+	preload("res://assets/species_pictures/spec_25.png")
+]
+const SPEC_FLAVORTEXTS = ["lat a", "lat b", "lat c", "lat d", "lat e", "lat f", "lat g", "lat h", "lat i", "lat j", "lat k", "lat l", "lat m", "lat n", "lat o", "lat p", "lat q", "lat r", "lat s", "lat t", "lat u", "lat v", "lat w", "lat x", "lat y", "lat z"]
 
 
 

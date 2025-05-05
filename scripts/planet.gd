@@ -47,8 +47,6 @@ func request_abduct(spec_index: int, abduct_delta) -> bool:
 	return true
 
 
-
-
 func set_planet_data(input: Dictionary) -> void:	
 	#Called by the signal planet_data_requested
 	print("Planet: set_planet_data")
@@ -66,7 +64,6 @@ func set_planet_data(input: Dictionary) -> void:
 func _on_area_2d_mouse_entered() -> void:
 	emit_signal("tooltip_requested")
 
-
 func open_tooltip() -> void:
 	#should only be called by Planet Manager
 	emit_signal("planet_data_requested")
@@ -80,7 +77,6 @@ func close_tooltip() -> void:
 func empty_abduct_arr() -> void:
 	abduct_arr.resize(26)
 	abduct_arr.fill(0)
-
 
 func _on_tooltip_hitbox_mouse_exited() -> void:
 	close_tooltip()

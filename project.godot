@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 my_constants="*res://scripts/constants.gd"
 GlobalCalculations="*res://scripts/global_calculations.gd"
+BgMusicPlayer="*res://scenes/bg_music_player.tscn"
 
 [display]
 
@@ -66,5 +67,7 @@ KEY_P={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 textures/decals/filter=0
 textures/light_projectors/filter=0

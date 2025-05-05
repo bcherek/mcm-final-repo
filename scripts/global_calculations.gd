@@ -172,6 +172,11 @@ func Increase_Time(dest_planet: int = -1, src_planet: int = -1, population_abduc
 		add_population(dest_planet, population_abducted)
 	Current_Time += 1
 	
+	for spec_id in range(26):
+		if (extinction_years[spec_id] == -1 && get_universal_pop(spec_id) < 1.0):
+			extinction_years[spec_id] = Current_Time
+	
+static var extinction_years: Array[int] = []
 
 	
 #region X_Population_All Null assignment
@@ -329,10 +334,12 @@ func _Fill_CompMatrix():
 		for n in range(26):
 			_Calculate_Competition_A(All_Const[i],All_Const[n])
 			#print("Species", i, "and Species",n,"Complete")
-
+	
 
 
 func _ready() -> void:
+	extinction_years.resize(26)
+	extinction_years.fill(-1)
 	populate_starting_planet_pops()
 	_Fill_CompMatrix()
 	
